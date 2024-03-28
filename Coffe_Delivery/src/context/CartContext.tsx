@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode, createContext, useContext, useState } from "react";
-//import Tradicional from "../assets/Img-Coffes/Expresso.svg";
+import { NewListCoffe } from "../components/pages/Home/Coffes/NewCardCoffes";
 
 export type CoffeTypes =
   | "traditional"
@@ -18,67 +18,30 @@ export type CoffeTypes =
   | "macchiato"
   | "mocaccino";
 
-/* export type ListItensType = "img" | "coffeName" | "tag" | "descripition";
-/*  | "traditionalCoffe"
-  | "expressCoffe"
-  | "cremosoCoffe" */
-
 interface ICartContext {
-  coffesCount: {
-    traditional: number;
-    express: number;
-    cremoso: number;
-    arabe: number;
-    cafeComLeite: number;
-    cafeGelado: number;
-    capuccino: number;
-    chocolateQuente: number;
-    cubano: number;
-    havaiano: number;
-    irlandes: number;
-    latte: number;
-    macchiato: number;
-    mocaccino: number;
-  };
-  /* itenToBuyList: {
-    img: string | undefined;
-    coffeName: string | undefined;
-    tag: string | undefined;
-    descripition: string | undefined;
-  }; */
-  totalSumItens: number;
-  handleAddCoffeToCart: ({ type }: { type: CoffeTypes }) => void;
-  handleRemoveCoffeToCart: ({ type }: { type: CoffeTypes }) => void;
-  imgCoffe: string;
-  coffeName: {
-    traditional: "Tradicional";
-    express: "Expresso Americano";
-    cremoso: "Expresso Cremoso";
-    arabe: "Árabe";
-    cafeComLeite: "Café com Leite";
-    cafeGelado: "Café Gelado";
-    capuccino: "Capuccino";
-    chocolateQuente: "Chocolate Quente";
-    cubano: "Cubano";
-    havaiano: "Havaiano";
-    irlandes: "Irlândes";
-    latte: "Latte";
-    macchiato: "Macchiato";
-    mocaccino: "Mochaccino";
-  };
-  descripitionCoffe: string;
-  setImgCoffe: (e: any) => void;
-  setCoffeName: (e: any) => void;
-  setDescripitionCoffe: (e: any) => void;
+  coffesCount: number;
+  coffesInListBuy: CoffesInListProps[];
+  listCoffes: NewListCoffe[];
+  sumTotalCoffes: number;
+  userName: string;
+  streetUser: string;
+  numberHouse: number;
+  setCoffesCount: (e: any) => void;
+  setCoffesInListBuy: (e: any) => void;
+  setListCoffes: (e: any) => void;
+  setSumTotalCoffes: (e: any) => void;
+  setUserName: (e: any) => void;
+  setStreetUser: (e: any) => void;
+  setNumberHouse: (e: any) => void;
 }
 
-/* interface IBuyList {
-  itenToBuyList: {
-    coffeName: string;
-    tag: string;
-    descripition: string;
-  };
-} */
+export interface CoffesInListProps {
+  id: number;
+  coffeImg?: string;
+  coffeName: string;
+  quantity: number;
+  coffeValue: number;
+}
 
 const CartContext = createContext<ICartContext | undefined>(undefined);
 
@@ -94,181 +57,183 @@ export const useCart = (): ICartContext => {
 };
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [coffesCount, setCoffesCount] = useState<{
-    traditional: number;
-    express: number;
-    cremoso: number;
-    arabe: number;
-    cafeComLeite: number;
-    cafeGelado: number;
-    capuccino: number;
-    chocolateQuente: number;
-    cubano: number;
-    havaiano: number;
-    irlandes: number;
-    latte: number;
-    macchiato: number;
-    mocaccino: number;
-  }>({
-    traditional: 0,
-    express: 0,
-    cremoso: 0,
-    arabe: 0,
-    cafeComLeite: 0,
-    cafeGelado: 0,
-    capuccino: 0,
-    chocolateQuente: 0,
-    cubano: 0,
-    havaiano: 0,
-    irlandes: 0,
-    latte: 0,
-    macchiato: 0,
-    mocaccino: 0,
-  });
+  //Informações do Formulario
 
-  /*   const [itenToBuyList, setItenToBuyList] = useState<
-    [
-      {
-        img: string | undefined;
-        coffeName: string | undefined;
-        tag: string | undefined;
-        descripition: string | undefined;
-      }
-    ]
-  >([
+  const [userName, setUserName] = useState("");
+  const [streetUser, setStreetUser] = useState("");
+  const [numberHouse, setNumberHouse] = useState(0);
+
+  const [coffesCount, setCoffesCount] = useState(0);
+  const [coffesInListBuy, setCoffesInListBuy] = useState<CoffesInListProps[]>(
+    []
+  );
+
+  const [listCoffes, setListCoffes] = useState([
     {
-      img: "string",
-      coffeName: "string",
-      tag: "string",
-      descripition: "string",
+      id: 1,
+      coffeImg: "src/assets/Img-Coffes/Expresso.svg",
+      characteristicsPrimary: "Tradicional",
+      characteristicsSecondary: undefined,
+      coffeName: "Tradicional",
+      description: "O tradicional café feito com água quente e grãos moídos",
+      quantity: 0,
+      coffeValue: 9.0,
     },
-  ]); */
+    {
+      id: 2,
+      coffeImg: "src/assets/Img-Coffes/Americano.svg",
+      characteristicsPrimary: "Tradicional",
+      characteristicsSecondary: undefined,
+      coffeName: "Expresso Americano",
+      description: "Expresso diluído, menos intenso que o tradicional",
+      quantity: 0,
+      coffeValue: 9.0,
+    },
+    {
+      id: 3,
+      coffeImg: "src/assets/Img-Coffes/Expresso Cremoso.svg",
+      characteristicsPrimary: "Tradicional",
+      characteristicsSecondary: undefined,
+      coffeName: "Expresso Cremoso",
+      description: "Café expresso tradicional com espuma cremosa",
+      quantity: 0,
+      coffeValue: 9.0,
+    },
+    {
+      id: 4,
+      coffeImg: "src/assets/Img-Coffes/Café Gelado.svg",
+      characteristicsPrimary: "Tradicional",
+      characteristicsSecondary: "Gelado",
+      coffeName: "Expresso Gelado",
+      description: "Bebida preparada com café expresso e cubos de gelo",
+      quantity: 0,
+      coffeValue: 9.0,
+    },
+    {
+      id: 5,
+      coffeImg: "src/assets/Img-Coffes/Café com Leite.svg",
+      characteristicsPrimary: "Tradicional",
+      characteristicsSecondary: "Com Leite",
+      coffeName: "Café com Leite",
+      description: "Meio a meio de expresso tradicional com leite vaporizado",
+      quantity: 0,
+      coffeValue: 9.0,
+    },
+    {
+      id: 6,
+      coffeImg: "src/assets/Img-Coffes/Latte.svg",
+      characteristicsPrimary: "Tradicional",
+      characteristicsSecondary: "Com Leite",
+      coffeName: "Latte",
+      description:
+        "Uma dose de café expresso com o dobro de leite e espuma cremosa",
+      quantity: 0,
+      coffeValue: 9.0,
+    },
+    {
+      id: 7,
+      coffeImg: "src/assets/Img-Coffes/Capuccino.svg",
+      characteristicsPrimary: "Tradicional",
+      characteristicsSecondary: "Com Leite",
+      coffeName: "Capuccino",
+      description:
+        "Bebida com canela feita de doses iguais de café, leite e espuma",
+      quantity: 0,
+      coffeValue: 9.0,
+    },
+    {
+      id: 8,
+      coffeImg: "src/assets/Img-Coffes/Macchiato.svg",
+      characteristicsPrimary: "Tradicional",
+      characteristicsSecondary: "Com Leite",
+      coffeName: "Macchiato",
+      description:
+        "Café expresso misturado com um pouco de leite quente e espuma",
+      quantity: 0,
+      coffeValue: 9.0,
+    },
+    {
+      id: 9,
+      coffeImg: "src/assets/Img-Coffes/Mochaccino.svg",
+      characteristicsPrimary: "Tradicional",
+      characteristicsSecondary: "Com Leite",
+      coffeName: "Mocaccino",
+      description: "Café expresso com calda de chocolate, pouco leite e espuma",
+      quantity: 0,
+      coffeValue: 9.0,
+    },
+    {
+      id: 10,
+      coffeImg: "src/assets/Img-Coffes/Chocolate Quente.svg",
+      characteristicsPrimary: "Especial",
+      characteristicsSecondary: "Com Leite",
+      coffeName: "Chocolate Quente",
+      description:
+        "Bebida feita com chocolate dissolvido no leite quente e café",
+      quantity: 0,
+      coffeValue: 9.0,
+    },
+    {
+      id: 11,
+      coffeImg: "src/assets/Img-Coffes/Cubano.svg",
+      characteristicsPrimary: "Especial",
+      characteristicsSecondary: "Alcoólico e Gelado",
+      coffeName: "Cubano",
+      description:
+        "Drink gelado de café expresso com rum, creme de leite e hortelã",
+      quantity: 0,
+      coffeValue: 9.0,
+    },
+    {
+      id: 12,
+      coffeImg: "src/assets/Img-Coffes/Havaiano.svg",
+      characteristicsPrimary: "Especial",
+      coffeName: "Havaiano",
+      description: "Bebida adocicada preparada com café e leite de coco",
+      quantity: 0,
+      coffeValue: 9.0,
+    },
+    {
+      id: 13,
+      coffeImg: "src/assets/Img-Coffes/Árabe.svg",
+      characteristicsPrimary: "Especial",
+      coffeName: "Árabe",
+      description: "Bebida preparada com grãos de café árabe e especiarias",
 
-  const [imgCoffe, setImgCoffe] = useState(" ");
-  const [coffeName, setCoffeName] = useState<{
-    traditional: string;
-    express: string;
-    cremoso: string;
-    arabe: string;
-    cafeComLeite: string;
-    cafeGelado: string;
-    capuccino: string;
-    chocolateQuente: string;
-    cubano: string;
-    havaiano: string;
-    irlandes: string;
-    latte: string;
-    macchiato: string;
-    mocaccino: string;
-  }>({
-    traditional: "Tradicional",
-    express: "Expresso Americano",
-    cremoso: "Expresso Cremoso",
-    arabe: "Árabe",
-    cafeComLeite: "Café com Leite",
-    cafeGelado: "Café Gelado",
-    capuccino: "Capuccino",
-    chocolateQuente: "Chocolate Quente",
-    cubano: "Cubano",
-    havaiano: "Havaiano",
-    irlandes: "Irlândes",
-    latte: "Latte",
-    macchiato: "Macchiato",
-    mocaccino: "Mochaccino",
-  });
-  const [descripitionCoffe, setDescripitionCoffe] = useState("");
+      quantity: 0,
+      coffeValue: 9.0,
+    },
+    {
+      id: 14,
+      coffeImg: "src/assets/Img-Coffes/Irlandês.svg",
+      characteristicsPrimary: "Especial",
+      characteristicsSecondary: "Alcoólico",
+      coffeName: "Irlândes",
+      description: "Bebida a base de café, uísque irlandês, açúcar e chantilly",
+      quantity: 0,
+      coffeValue: 9.0,
+    },
+  ]);
 
-  // Função Responsavel por adicionar o numero de Itens no carrinho
-  function handleAddCoffeToCart({ type }: { type: CoffeTypes }) {
-    setCoffesCount((prevState) => {
-      return { ...prevState, [type]: prevState[type] + 1 };
-    });
-
-    setCoffeName((prevNames) => {
-      return { ...prevNames, [type]: getTypeName(type) };
-    });
-
-    console.log(coffeName);
-  }
-
-  // Função auxiliar para obter o nome correspondente ao tipo de café
-  function getTypeName(type: CoffeTypes): string {
-    switch (type) {
-      case "traditional":
-        return "Café Tradicional";
-      case "express":
-        return "Expresso Americano";
-      case "cremoso":
-        return "Expresso Cremoso";
-      case "cafeGelado":
-        return "Café Gelado";
-      case "cafeComLeite":
-        return "Café com Leite";
-      case "latte":
-        return "Latte";
-      case "capuccino":
-        return "Capuccino";
-      case "mocaccino":
-        return "Mocaccino";
-      case "chocolateQuente":
-        return "Chocolate Quente";
-      case "cubano":
-        return "Cubano";
-      case "havaiano":
-        return "Havaiano";
-      case "arabe":
-        return "Árabe";
-      case "irlandes":
-        return "Irlândes";
-      // Adicione casos para outros tipos de café, se necessário
-      default:
-        return ""; // Padrão, pode ser ajustado conforme necessário
-    }
-  }
-
-  /*  itenToBuyList.map((item) => {
-       return (
-         <div>
-           <TradicionalCoffe />
-         </div>
-       );
-     }) */
-
-  function handleRemoveCoffeToCart({ type }: { type: CoffeTypes }) {
-    setCoffesCount((prevState) => {
-      return { ...prevState, [type]: prevState[type] - 1 };
-    });
-  }
-
-  const totalSumItens =
-    coffesCount.express +
-    coffesCount.traditional +
-    coffesCount.cremoso +
-    coffesCount.arabe +
-    coffesCount.cafeComLeite +
-    coffesCount.cafeGelado +
-    coffesCount.capuccino +
-    coffesCount.chocolateQuente +
-    coffesCount.cubano +
-    coffesCount.havaiano +
-    coffesCount.irlandes +
-    coffesCount.latte +
-    coffesCount.macchiato +
-    coffesCount.mocaccino;
+  const [sumTotalCoffes, setSumTotalCoffes] = useState(0);
 
   return (
     <CartContext.Provider
       value={{
         coffesCount,
-        imgCoffe,
-        coffeName,
-        descripitionCoffe,
-        setImgCoffe,
-        setCoffeName,
-        setDescripitionCoffe,
-        handleAddCoffeToCart,
-        handleRemoveCoffeToCart,
-        totalSumItens,
+        coffesInListBuy,
+        listCoffes,
+        sumTotalCoffes,
+        userName,
+        streetUser,
+        numberHouse,
+        setListCoffes,
+        setCoffesCount,
+        setCoffesInListBuy,
+        setSumTotalCoffes,
+        setUserName,
+        setStreetUser,
+        setNumberHouse,
       }}
     >
       {children}

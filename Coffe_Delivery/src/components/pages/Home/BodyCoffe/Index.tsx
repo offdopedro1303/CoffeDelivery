@@ -12,25 +12,77 @@ import {
 } from "./styles";
 
 import Image from "../../../../assets/Imagem.svg";
-
-import { ShoppingCart, Package, Timer, Coffee } from "phosphor-react";
-import { TradicionalCoffe } from "../Coffes/Tradicional/Index";
-import { AmericanoCoffe } from "../Coffes/AmericanoCoffe/Index";
+import {
+  ShoppingCart,
+  Package,
+  Timer,
+  Coffee,
+  Minus,
+  Plus,
+} from "phosphor-react";
 import { OptionsMenu } from "./styles";
-import { ExpressoCremoso } from "../Coffes/expressoCremoso/Index";
-import { CafeGelado } from "../Coffes/CafeGelado/Index";
-import { CafeComLeite } from "../Coffes/CafeComLeite/Index";
-import { LatteCoffe } from "../Coffes/Latte/Index";
-import { CapuccinoCoffe } from "../Coffes/Capuccino/Index";
-import { MacchiatoCoffe } from "../Coffes/Macchiato/Index";
-import { MochaccinoCoffe } from "../Coffes/Mochaccino/Index";
-import { ChocolateQuente } from "../Coffes/ChocolateQuente/Index";
-import { CubanoCoffe } from "../Coffes/Cubano/Index";
-import { HavaianoCoffe } from "../Coffes/Havaiano/Index";
-import { ArabeCoffe } from "../Coffes/Arabe/Index";
-import { IrlandesCoffe } from "../Coffes/Irlandes/Index";
-
+import {
+  CoffesStyled,
+  ContentCard,
+  Characteristics,
+  CharacteristicsStyled,
+  QuantyControl,
+} from "../Coffes/style";
+import { CoffesInListProps, useCart } from "../../../../context/CartContext";
+//import { NewCardCoffe } from "../Coffes/NewCardCoffes";
 export function BodyCoffe() {
+  const {
+    coffesCount,
+    coffesInListBuy,
+    listCoffes,
+    sumTotalCoffes,
+    setListCoffes,
+    setCoffesCount,
+    setCoffesInListBuy,
+    setSumTotalCoffes,
+  } = useCart();
+  console.log(coffesInListBuy);
+  function handleAddCoffeInList(coffe: CoffesInListProps) {
+    //Nesse código ele criou uma nova variavel e transformou minha lista em um estado,
+    //assim ele percorreu ela utilizando o map e para cada item da lista ele fez uma comparação entre o id do item e o id do coffe
+    // e em seguida retornou o item em si com a propriedade quantity + 1 e no final retornou o objeto em si
+    const updateQuantityCoffes = listCoffes.map((item) => {
+      if (item.id === coffe.id) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+        };
+      }
+      return item;
+    });
+
+    //Adicionando valor no TOTAL da conta do cliente
+    const newValueSumTotal = sumTotalCoffes + coffe.coffeValue;
+
+    setCoffesCount(coffesCount + 1);
+    setCoffesInListBuy([...coffesInListBuy, coffe]);
+    setListCoffes(updateQuantityCoffes);
+    setSumTotalCoffes(newValueSumTotal);
+  }
+
+  function handleRemoveCoffeInList(coffe: CoffesInListProps) {
+    const removeQuantityCoffes = listCoffes.map((item) => {
+      if (item.id === coffe.id) {
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    });
+
+    const reducingValueTotal = sumTotalCoffes - coffe.coffeValue;
+
+    const removeCoffeInList = [...coffesInListBuy];
+    removeCoffeInList.pop();
+    console.log("RemoveCoffeInList: ", removeCoffeInList);
+    setSumTotalCoffes(reducingValueTotal);
+    setCoffesCount(coffesCount - 1);
+    setCoffesInListBuy(removeCoffeInList);
+    setListCoffes(removeQuantityCoffes);
+  }
   return (
     <div>
       <BodyContents>
@@ -84,35 +136,71 @@ export function BodyCoffe() {
         <Menu>
           <h1>Menu</h1>
           {/* Cardapio */}
-
           <OptionsMenu>
-            <TradicionalCoffe />
-            <AmericanoCoffe />
-            <ExpressoCremoso />
-            <CafeGelado />
+            {listCoffes.map((item) => {
+              return (
+                <div>
+                  <CoffesStyled>
+                    <ContentCard>
+                      <img src={item.coffeImg} alt="" />
+                      <Characteristics>
+                        <CharacteristicsStyled>
+                          <h4>{item.characteristicsPrimary}</h4>
+                        </CharacteristicsStyled>
+                        <div>
+                          {item.characteristicsSecondary === undefined ? (
+                            <span></span>
+                          ) : (
+                            <CharacteristicsStyled>
+                              <h4>{item.characteristicsSecondary}</h4>
+                            </CharacteristicsStyled>
+                          )}
+                        </div>
+                      </Characteristics>
+                      <h2>{item.coffeName}</h2>
+                      <p>{item.description}</p>
+                    </ContentCard>
+                    <QuantyControl>
+                      <p>R$</p>
+                      <h6>{item.coffeValue}</h6>
+                      <Minus
+                        size={22}
+                        color={"#8047F8"}
+                        onClick={() => {
+                          handleRemoveCoffeInList(item);
+                        }}
+                      />
+                      <p>{item.quantity}</p>
+                      <Plus
+                        size={22}
+                        alt=""
+                        color={"#8047F8"}
+                        onClick={() => {
+                          handleAddCoffeInList(item);
+                        }}
+                      />
+                    </QuantyControl>
+                  </CoffesStyled>
+                </div>
+              );
+            })}
           </OptionsMenu>
 
-          <OptionsMenu>
-            <CafeComLeite />
-            <LatteCoffe />
-            <CapuccinoCoffe />
-            <MacchiatoCoffe />
-          </OptionsMenu>
-
-          <OptionsMenu>
-            <MochaccinoCoffe />
-            <ChocolateQuente />
-            <CubanoCoffe />
-            <HavaianoCoffe />
-          </OptionsMenu>
-
-          <OptionsMenu>
-            <ArabeCoffe />
-            <IrlandesCoffe />
-          </OptionsMenu>
           {/* Cardapio */}
         </Menu>
       </div>
     </div>
   );
 }
+/* <NewCardCoffes
+                  coffeName={item.coffeName}
+                  id={index}
+                  imgCoffe={item.coffeImg}
+                  characteristicsPrimary={item.chracteristicsPrimary}
+                  characteristicsSecondary={item.chracteristicsSecundary}
+                  description={item.description}
+                  coffeValue={item.coffeValue}
+                  handleAddListCoffe={function (e: any): void {
+                    throw new Error("Function not implemented.");
+                  }}
+                /> */

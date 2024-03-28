@@ -81,18 +81,26 @@ export const FirstColumnIcons = styled.div`
 
 export const Menu = styled.div`
   display: flex;
+
   flex-direction: column;
-  width: 2000px;
+  width: 800px;
   padding: 32px 160px;
 `;
 export const OptionsMenu = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 20rem 20rem 20rem 20rem;
+  grid-template-rows: 20rem 20rem 20rem 20rem;
   width: 1440px;
-  //overflow: scroll;
-  //word-wrap: break-word;
   justify-content: center;
   padding: 3rem;
   gap: 2rem;
   align-items: center;
+
+  @media (max-width: 600px) {
+    display: grid;
+    grid-template-columns: 20rem 20rem;
+    border: 1px solid red;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 `;

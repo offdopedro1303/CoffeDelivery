@@ -28,6 +28,25 @@ export const LabelStyle = styled.label`
   border-radius: 8px;
   background-color: ${(props) => props.theme["base-label"]};
 `;
+
+export const ContentUserName = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  width: 560px;
+`;
+
+export const InputStyleUser = styled.input`
+  display: flex;
+  width: 200px;
+  padding: 12px;
+  align-items: normal;
+  gap: 4px;
+
+  border-radius: 4px;
+  border: 1px solid var(${(props) => props.theme["base-button"]}, #e6e5e5);
+  background: var(${(props) => props.theme["base-input"]}, #ededed);
+`;
 export const InputStyleCep = styled.input`
   display: flex;
   width: 200px;
@@ -236,7 +255,7 @@ export const CompleteThePurchase = styled.div`
   width: 448px;
   padding: 40px;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 24px;
 
   border-radius: 6px 44px;

@@ -1,3 +1,4 @@
+import { useCart } from "../../../../context/CartContext";
 import { BuyList } from "../BuyList";
 import {
   BeforeForm,
@@ -19,6 +20,8 @@ import {
   ButtonOfPaymentByCredit,
   ButtonOfPaymentByDebit,
   ButtonOfPaymentByMoney,
+  InputStyleUser,
+  ContentUserName,
 } from "./style";
 
 import { CreditCard, CurrencyDollar, Bank, Money } from "phosphor-react";
@@ -27,6 +30,8 @@ export function FormPage() {
   function Test() {
     console.log("ok");
   }
+
+  const { setUserName, setStreetUser, setNumberHouse } = useCart();
 
   return (
     <BodyShop>
@@ -39,11 +44,30 @@ export function FormPage() {
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </div>
           </div>
+          <ContentUserName>
+            <LabelStyle>
+              <InputStyleUser
+                type="text"
+                name="user_Name"
+                placeholder="Cliente"
+                onChange={(e) => {
+                  setUserName(e.target.value);
+                }}
+              />
+            </LabelStyle>
+            <LabelStyle>
+              <InputStyleCep type="text" name="user_CEP" placeholder="CEP" />
+            </LabelStyle>
+          </ContentUserName>
           <LabelStyle>
-            <InputStyleCep type="text" name="user_CEP" placeholder="CEP" />
-          </LabelStyle>
-          <LabelStyle>
-            <InputStyleStreet type="text" name="streetName" placeholder="Rua" />
+            <InputStyleStreet
+              type="text"
+              name="streetName"
+              placeholder="Rua"
+              onChange={(e) => {
+                setStreetUser(e.target.value);
+              }}
+            />
           </LabelStyle>
           <StyledTest>
             <LabelStyle>
@@ -51,6 +75,9 @@ export function FormPage() {
                 type="text"
                 name="numberHouse"
                 placeholder="Número"
+                onChange={(e) => {
+                  setNumberHouse(e.target.value);
+                }}
               />
             </LabelStyle>
             <LabelStyle>

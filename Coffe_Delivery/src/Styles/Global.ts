@@ -7,11 +7,10 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 body{
-
   height: 100vh;
   background-color: ${(props) => props.theme["background"]};
-  
 }
+
 h1{
   font-family: 'Baloo 2', sans-serif;
   font-weight: 800;
@@ -19,16 +18,24 @@ h1{
 }
 p,li{
   /* Text/Regular L */
-font-family: Roboto;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 130%; /* 26px */
+  font-family: "Roboto";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 26px */
 }
 
 h6{
   font-family: 'Baloo 2', sans-serif;
   font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 130%;
+}
+
+strong{
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 16px;
   font-style: normal;
   font-weight: 800;
   line-height: 130%;
@@ -65,7 +72,7 @@ button{
   color: var(${(props) => props.theme["base-text"]}, #574F4D);
   /* Components/Button S */
   font-family: "Roboto";
-  font-size: 12px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 160%; /* 19.2px */

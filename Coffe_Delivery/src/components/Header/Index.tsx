@@ -6,13 +6,13 @@ import {
   ShopIcon,
   LocationIcon,
 } from "./style";
-import Logo from "./../../../../assets/Logo.svg";
+import Logo from "../../assets/Logo.svg";
 import { MapPinLine, ShoppingCart } from "phosphor-react";
-import { useCart } from "../../../../context/CartContext";
+import { useCart } from "../../context/CartContext";
 import { NavLink } from "react-router-dom";
 
 export function Header() {
-  const { totalSumItens } = useCart();
+  const { coffesCount } = useCart();
 
   return (
     <HeaderContainer>
@@ -34,7 +34,7 @@ export function Header() {
                 color={"#C47F17"}
                 alt="Carrinho de compra"
               />
-              <div>{totalSumItens}</div>
+              <div>{coffesCount}</div>
             </ShopIcon>
           </NavLink>
         </LocationContainer>

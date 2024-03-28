@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
-  width: 100%;
+  width: 99vw;
   padding: 36px 160px;
   background-color: ${(props) => props.theme["background"]};
 `;
@@ -40,11 +40,20 @@ export const ShopIcon = styled.div`
   display: flex;
   padding: 8px;
   justify-content: center;
+  text-decoration: none;
   align-items: center;
   gap: 4px;
   border-radius: 8px;
   margin-left: 1rem;
   background-color: ${(props) => props.theme["yellow-light"]};
+  :active {
+    color: ${(props) => props.theme["yellow-light"]};
+    background-color: ${(props) => props.theme["yellow-light"]};
+  }
+`;
+
+export const testLink = styled.div`
+  ${(props) => props.theme["background"]}
 `;
 
 export const Shop = styled.img`
