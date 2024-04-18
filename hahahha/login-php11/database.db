@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `usuario_id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `usuario` VARCHAR(200) NOT NULL,
+  `senha` VARCHAR(32) NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
+  `data_cadastro` DATETIME NOT NULL
+);
+
+INSERT INTO `usuario` (`usuario`,`senha`, `nome`, `data_cadastro`) 
+VALUES ('canalti','10f722b5984a49bce67d434464fae37e', 'Canal TI', '2019-01-11 19:42:12');

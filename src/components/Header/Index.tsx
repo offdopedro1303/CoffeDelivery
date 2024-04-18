@@ -1,3 +1,4 @@
+
 import {
   HeaderContainer,
   NavContainer,
@@ -37,6 +38,9 @@ export function Header() {
               <div>{coffesCount}</div>
             </ShopIcon>
           </NavLink>
+          <a href="http://localhost/CoffeDelivery/hahahha/login-php11/">
+            <img width="30px" src="../imagem/perfil.png" alt="Perfil" />
+          </a>
         </LocationContainer>
       </NavContainer>
     </HeaderContainer>
