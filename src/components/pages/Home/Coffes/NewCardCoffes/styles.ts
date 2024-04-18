@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CoffesStyledInList = styled.div`
   display: flex;
   flex-direction: row;
-  width: 390px;
+  width: 100%;
 
   align-items: flex-start;
   gap: 20px;
@@ -22,7 +22,7 @@ export const QuantyControlInList = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  width: 250px;
+  width: 100%;
   border: 1px solid red;
 `;
 

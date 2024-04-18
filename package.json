@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "csx": "^10.0.2",
     "ext": "^1.7.0",
     "install": "^0.13.0",
     "phosphor-react": "^1.4.1",

@@ -4,8 +4,9 @@ export const CoffesStyled = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 6px 36px;
-  width: 256px;
-  height: 310px;
+  width: 100%;
+  margin-left: 390px;
+  justify-content: center;
   padding: 1rem;
   align-items: center;
   text-align: center;

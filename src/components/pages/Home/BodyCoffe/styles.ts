@@ -5,15 +5,16 @@ export const BodyContents = styled.div`
 `;
 
 export const InfoHeader = styled.div`
-  width: 1440px;
+  width: 100%;
   flex-shrink: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 32px 160px;
-  border-radius: 0px 100px 100px 0px;
   gap: 4rem;
-  background-color: ${(props) => props.theme["pink"]};
+  background-color: #EEDCD1;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  margin-top: -75px;
 `;
 
 export const Glass = styled.img`
@@ -90,7 +91,7 @@ export const OptionsMenu = styled.div`
   display: grid;
   grid-template-columns: 20rem 20rem 20rem 20rem;
   grid-template-rows: 20rem 20rem 20rem 20rem;
-  width: 1440px;
+  width: 100%;
   justify-content: center;
   padding: 3rem;
   gap: 2rem;
