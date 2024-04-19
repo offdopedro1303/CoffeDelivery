@@ -1,4 +1,5 @@
 
+
 import {
   HeaderContainer,
   NavContainer,
@@ -14,6 +15,7 @@ import { NavLink } from "react-router-dom";
 
 export function Header() {
   const { coffesCount } = useCart();
+
 
   return (
     <HeaderContainer>

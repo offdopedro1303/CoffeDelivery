@@ -25,6 +25,6 @@ $stmt->execute([$nome, $usuario, $senha]);
 
 $_SESSION['status_cadastro'] = true;
 
-header('Location: cadastro.php');
+header('Location: login.php');
 exit;
 ?>

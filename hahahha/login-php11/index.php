@@ -15,14 +15,25 @@ session_start();
     <link rel="stylesheet" href="css/bulma.min.css" />
     <link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
-
+<style>
+.container1{
+    height: 100px;
+    display: flex;
+   align-items: center;
+   justify-content: center;
+}
+</style>
 <body>
+    <div class="container1">
+        <a href="">
+    <img src="../login-php11/img/Logo.svg"></img>
+</a>
+</div>
     <section class="hero is-success is-fullheight">
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="column is-4 is-offset-4">
                     <h3 class="title has-text-grey">Sistema de Login</h3>
-                    <h3 class="title has-text-grey"><a href="https://youtube.com/canaltioficial" target="_blank">Canal TI</a></h3>
                     <?php
                     if(isset($_SESSION['nao_autenticado'])):
                     ?>
