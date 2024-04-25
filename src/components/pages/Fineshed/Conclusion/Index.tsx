@@ -16,7 +16,7 @@ import { MapPinLine, User, Timer, CurrencyDollar } from "phosphor-react";
 import conclusionImage from "../../../../assets/conclusionImage.svg";
 
 export function Conclusion() {
-  const { userName, streetUser, numberHouse } = useCart();
+  const { userName, streetUser, numberHouse, BairroUser } = useCart();
 
   return (
     <BodyConclusionPage>
@@ -43,7 +43,7 @@ export function Conclusion() {
               <p>
                 Entrega em{" "}
                 <strong>
-                  {streetUser}, {numberHouse}, Camilopolis
+                  {streetUser}, {numberHouse}, {BairroUser},
                 </strong>{" "}
                 - Santo André - SP
               </p>
