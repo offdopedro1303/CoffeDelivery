@@ -65,6 +65,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [streetUser, setStreetUser] = useState("");
   const [numberHouse, setNumberHouse] = useState(0);
   const [seuBairro, setBairro] = useState("");
+  const [seuCartao, setCartao] = useState("");
 
   const [coffesCount, setCoffesCount] = useState(0);
   const [coffesInListBuy, setCoffesInListBuy] = useState<CoffesInListProps[]>(
