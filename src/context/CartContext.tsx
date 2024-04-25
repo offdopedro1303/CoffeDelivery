@@ -26,11 +26,7 @@ interface ICartContext {
   userName: string;
   streetUser: string;
   numberHouse: number;
-<<<<<<< HEAD
   seuBairro: string;
-=======
-  BairroUser: string;
->>>>>>> f5f63875484cdf038f18b0f823b0e955044b6aab
   setCoffesCount: (e: any) => void;
   setCoffesInListBuy: (e: any) => void;
   setListCoffes: (e: any) => void;
@@ -38,11 +34,7 @@ interface ICartContext {
   setUserName: (e: any) => void;
   setStreetUser: (e: any) => void;
   setNumberHouse: (e: any) => void;
-<<<<<<< HEAD
   setBairro: (e: any) => void;
-=======
-  setBairroUser: (e: any) => void;
->>>>>>> f5f63875484cdf038f18b0f823b0e955044b6aab
 }
 
 export interface CoffesInListProps {
@@ -71,7 +63,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const [userName, setUserName] = useState("");
   const [streetUser, setStreetUser] = useState("");
-  const [BairroUser, setBairroUser] = useState("");
   const [numberHouse, setNumberHouse] = useState(0);
   const [seuBairro, setBairro] = useState("");
 
@@ -239,11 +230,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         userName,
         streetUser,
         numberHouse,
-<<<<<<< HEAD
         seuBairro,
-=======
-        BairroUser,
->>>>>>> f5f63875484cdf038f18b0f823b0e955044b6aab
         setListCoffes,
         setCoffesCount,
         setCoffesInListBuy,
@@ -251,11 +238,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         setUserName,
         setStreetUser,
         setNumberHouse,
-<<<<<<< HEAD
         setBairro,
-=======
-        setBairroUser,
->>>>>>> f5f63875484cdf038f18b0f823b0e955044b6aab
       }}
     >
       {children}
