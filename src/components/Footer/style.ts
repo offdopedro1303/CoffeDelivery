@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const Espaco = styled.div`
+  margin-top: 20px;
+`;
+
 export const FooterContainer = styled.div`
   width: 100%;
   padding: 60px;
@@ -46,3 +50,4 @@ export const So3 = styled.div`
  margin-left: 0px;
  margin-right: 0px;
 `;
+

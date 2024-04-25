@@ -1,4 +1,5 @@
 import {
+    Espaco,
     FooterContainer,
     Parte1,
     LogoContainer,
@@ -17,27 +18,29 @@ import {
   
   export function Footer() {
     return (
-        <FooterContainer>
-            <Parte1>
-                <LogoContainer>
-                 <img src={Logo} alt="Logo do Café Delivery" />         
-                </LogoContainer> 
-                <Termo>
-                    <p>Termos de uso</p>  
-                </Termo>
-                <Social>
-                    <So1>
-                        <FaWhatsapp/>
-                    </So1>
-                    <So2>
-                        <FaInstagram/>
-                    </So2>
-                    <So3>                        
-                        <FaFacebook/>
-                    </So3>
-                </Social>
-            </Parte1>
-        </FooterContainer>
+        <Espaco>
+            <FooterContainer>
+                <Parte1>
+                    <LogoContainer>
+                    <img src={Logo} alt="Logo do Café Delivery" />         
+                    </LogoContainer> 
+                    <Termo>
+                        <p>Termos de uso</p>  
+                    </Termo>
+                    <Social>
+                        <So1>
+                            <FaWhatsapp/>
+                        </So1>
+                        <So2>
+                            <FaInstagram/>
+                        </So2>
+                        <So3>                        
+                            <FaFacebook/>
+                        </So3>
+                    </Social>
+                </Parte1>
+            </FooterContainer>
+        </Espaco>
     );
   }
 
