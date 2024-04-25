@@ -31,7 +31,7 @@ export function FormPage() {
     console.log("ok");
   }
 
-  const { setUserName, setStreetUser, setNumberHouse } = useCart();
+  const { setUserName, setStreetUser, setNumberHouse, setBairro} = useCart();
 
   return (
     <BodyShop>
@@ -94,6 +94,9 @@ export function FormPage() {
                 type="text"
                 name="Neighborhood"
                 placeholder="Bairro"
+                onChange={(e) => {
+                  setBairro(e.target.value);
+                }}
               />
             </LabelStyle>
             <LabelStyle>
