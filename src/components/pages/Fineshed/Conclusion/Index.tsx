@@ -68,7 +68,7 @@ export function Conclusion() {
               </CashIcon>
               <AliginTextCard>
                 <p>Pagamento na entrega</p>
-                <strong>Cartão de Crédito</strong>
+                <strong></strong>
               </AliginTextCard>
             </ContentCardFinished>
           </ConfigIconsCard>

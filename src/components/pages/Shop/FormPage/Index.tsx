@@ -123,7 +123,8 @@ export function FormPage() {
           </div>
           <ButtonsOfPayment>
             <ButtonOfPaymentByCredit>
-              <CreditCard size={22} color={"#8047f8"} /> CARTÃO DE CRÉDITO
+              <CreditCard size={22} color={"#8047f8"}/> 
+              CARTÃO DE CRÉDITO
             </ButtonOfPaymentByCredit>
             <ButtonOfPaymentByDebit>
               <Bank size={22} color={"#8047f8"} />
