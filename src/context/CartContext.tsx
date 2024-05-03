@@ -27,6 +27,9 @@ interface ICartContext {
   streetUser: string;
   numberHouse: number;
   seuBairro: string;
+  buttonOfPaymentByCredit: any;
+  buttonOfPaymentByDebit: any;
+  buttonOfPaymentByMoney: any;
   setCoffesCount: (e: any) => void;
   setCoffesInListBuy: (e: any) => void;
   setListCoffes: (e: any) => void;
@@ -35,6 +38,9 @@ interface ICartContext {
   setStreetUser: (e: any) => void;
   setNumberHouse: (e: any) => void;
   setBairro: (e: any) => void;
+  setbuttonOfPaymentByCredit: (e: any) => void;
+  setbuttonOfPaymentByDebit: (e: any) => void;
+  setbuttonOfPaymentByMoney: (e: any) => void;
 }
 
 export interface CoffesInListProps {
@@ -65,7 +71,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [streetUser, setStreetUser] = useState("");
   const [numberHouse, setNumberHouse] = useState(0);
   const [seuBairro, setBairro] = useState("");
-  const [seuCartao, setCartao] = useState("");
+  const [buttonOfPaymentByCredit, setbuttonOfPaymentByCredit] = useState("");
+  const [buttonOfPaymentByDebit, setbuttonOfPaymentByDebit] = useState("");
+  const [buttonOfPaymentByMoney, setbuttonOfPaymentByMoney] = useState("");
 
   const [coffesCount, setCoffesCount] = useState(0);
   const [coffesInListBuy, setCoffesInListBuy] = useState<CoffesInListProps[]>(
@@ -232,6 +240,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
         streetUser,
         numberHouse,
         seuBairro,
+        buttonOfPaymentByCredit, 
+        buttonOfPaymentByDebit, 
+        buttonOfPaymentByMoney,
         setListCoffes,
         setCoffesCount,
         setCoffesInListBuy,
@@ -240,6 +251,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
         setStreetUser,
         setNumberHouse,
         setBairro,
+        setbuttonOfPaymentByCredit,
+        setbuttonOfPaymentByDebit,
+        setbuttonOfPaymentByMoney,
       }}
     >
       {children}

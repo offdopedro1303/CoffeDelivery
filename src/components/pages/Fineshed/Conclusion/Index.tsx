@@ -17,7 +17,7 @@ import conclusionImage from "../../../../assets/conclusionImage.svg";
 
 export function Conclusion() {
 
-  const { userName, streetUser, numberHouse, seuBairro} = useCart();
+  const { userName, streetUser, numberHouse, seuBairro, buttonOfPaymentByCredit, buttonOfPaymentByDebit, buttonOfPaymentByMoney} = useCart();
 
 
   return (
@@ -68,7 +68,7 @@ export function Conclusion() {
               </CashIcon>
               <AliginTextCard>
                 <p>Pagamento na entrega</p>
-                <strong></strong>
+                <strong>{buttonOfPaymentByCredit}, {buttonOfPaymentByDebit}, {buttonOfPaymentByMoney}</strong>
               </AliginTextCard>
             </ContentCardFinished>
           </ConfigIconsCard>
