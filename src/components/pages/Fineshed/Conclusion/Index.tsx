@@ -57,7 +57,7 @@ export function Conclusion() {
                 </TimerIcon>
                 <AliginTextCard>
                   <p>Previsão de Entrega</p>
-                  <strong>20 min - 30 min</strong>
+                  <strong>15 min - 20 min</strong>
                 </AliginTextCard>
               </ContentCardFinished>
             </div>
